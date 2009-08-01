@@ -57,6 +57,9 @@
 #define WORKAROUND_FAKE_CGEV 1
 #endif
 
+/* For Hero builds */
+#define RIL_REQUEST_SEND_SMS_EXTENDED (512)
+
 static void onRequest (int request, void *data, size_t datalen, RIL_Token t);
 static RIL_RadioState currentState();
 static int onSupports (int requestCode);
@@ -1800,6 +1803,7 @@ onRequest (int request, void *data, size_t datalen, RIL_Token t)
 				RIL_onRequestComplete(t, RIL_E_SUCCESS, NULL, 0);
 				break;
 			}
+                case RIL_REQUEST_SEND_SMS_EXTENDED:
 		case RIL_REQUEST_SEND_SMS:
 			requestSendSMS(data, datalen, t);
 			break;
